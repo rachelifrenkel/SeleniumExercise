@@ -5,8 +5,8 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class ExtentTestNGListener implements ITestListener{
-    private static ExtentReports extent = ExtentReportsManager.getInstance();
+public class ExtentTestNGListener implements ITestListener {
+    private final static ExtentReports extent = ExtentReportsManager.getInstance();
     private static ExtentTest test;
 
     @Override

@@ -2,9 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 
 public class TablePage extends BasePage {
@@ -13,6 +11,7 @@ public class TablePage extends BasePage {
     public TablePage(WebDriver driver) {
         super(driver);
     }
+
     public String getTableCellText(WebElement table, int searchColumn, String searchText, int returnColumnText) {
 
         List<WebElement> rows = wait.until(ExpectedConditions.visibilityOfAllElements(table.findElements(By.tagName("tr"))));
@@ -44,17 +43,18 @@ public class TablePage extends BasePage {
         return verifyTableCellText(table, searchColumn, searchText, returnColumnText, expectedText);
     }
 
-    public String getTableCellTextByXpathWrapper(String tableName, int searchColumn, String searchText, int returnColumnText) throws Exception{
+    public String getTableCellTextByXpathWrapper(String tableName, int searchColumn, String searchText, int returnColumnText) {
         WebElement table = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(tableName)));
         return getTableCellTextByXpath(table, searchColumn, searchText, returnColumnText);
     }
-    public String getTableCellTextByXpath(WebElement table, int searchColumn, String searchText, int returnColumnText) throws Exception{
 
-        String xpath = ".//tr[.//td[" + (searchColumn+1) + "][contains(., '" + searchText + "')]]";
+    public String getTableCellTextByXpath(WebElement table, int searchColumn, String searchText, int returnColumnText) {
+
+        String xpath = ".//tr[.//td[" + (searchColumn + 1) + "][contains(., '" + searchText + "')]]";
 
         WebElement row = table.findElement(By.xpath(xpath));
 
-        String cellXpath = ".//td[" + (returnColumnText+1) + "]";
+        String cellXpath = ".//td[" + (returnColumnText + 1) + "]";
 
         WebElement returnCell = row.findElement(By.xpath(cellXpath));
 

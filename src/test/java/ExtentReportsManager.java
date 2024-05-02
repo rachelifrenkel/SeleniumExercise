@@ -3,7 +3,6 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 public class ExtentReportsManager {
-
     private static ExtentReports extent;
     private static ExtentTest test;
 

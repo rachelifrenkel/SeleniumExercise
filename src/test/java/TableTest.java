@@ -18,7 +18,7 @@ public class TableTest extends BaseTest {
     String expectedText = configReader.getProperty("expected_text");
 
 
-    public TableTest(){
+    public TableTest() {
         tablePage = new TablePage(driver);
     }
 
@@ -27,10 +27,10 @@ public class TableTest extends BaseTest {
     @DisplayName("get table index and column,check the cell, verify get the expected text")
     public void testTable() {
 
-        boolean isTableCellCorrect = tablePage.verifyTableCellTextWrapper(tableName,Integer.parseInt(searchColumn),
-                        searchText,Integer.parseInt(returnColumnText),
-                        expectedText);
-        assertTrue(isTableCellCorrect,"verify get the expected text");
+        boolean isTableCellCorrect = tablePage.verifyTableCellTextWrapper(tableName, Integer.parseInt(searchColumn),
+                searchText, Integer.parseInt(returnColumnText),
+                expectedText);
+        assertTrue(isTableCellCorrect, "verify get the expected text");
     }
 
     @Test
@@ -39,13 +39,12 @@ public class TableTest extends BaseTest {
 
         String TableCellCorrect;
         try {
-            TableCellCorrect = tablePage.getTableCellTextByXpathWrapper(tableName,Integer.parseInt(searchColumn),
-                    searchText,Integer.parseInt(returnColumnText));
+            TableCellCorrect = tablePage.getTableCellTextByXpathWrapper(tableName, Integer.parseInt(searchColumn),
+                    searchText, Integer.parseInt(returnColumnText));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        assertEquals(TableCellCorrect ,expectedText,"verify get the expected text");
+        assertEquals(TableCellCorrect, expectedText, "verify get the expected text");
     }
 
 }
